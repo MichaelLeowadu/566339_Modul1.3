@@ -16,10 +16,13 @@ import androidx.compose.runtime.setValue
 fun WaterCounter(modifier: Modifier = Modifier){
     Column(modifier = modifier.padding(16.dp)) {
         // Changes to count are now tracked by compose
-        var count by remember{mutableStateOf(0)}
-        Text("You've had $count glasses.")
-        Button(onClick = { count++ }, Modifier.padding(top = 8.dp)) {
-            Text("Add One")
+        var count by remember { mutableStateOf(0) }
+        if (count > 0) {
+            Text("You've had $count glasses.")
+        }
+            Button(onClick = { count++ }, Modifier.padding(top = 8.dp), enabled = count < 10) {
+                Text("Add One")
+
         }
     }
 }
