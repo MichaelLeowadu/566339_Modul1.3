@@ -1,5 +1,6 @@
 package com.example.basicstatecodelab
 
+import WaterCounter
 import WellnessScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -29,6 +30,25 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+//buatkan preview untuk wellness screen dan watercounter
+
+@Preview
+@Composable
+fun WellnessScreenPreview() {
+    BasicStateCodelabTheme {
+        WellnessScreen()
+    }
+}
+
+@Preview
+@Composable
+fun WaterCounterPreview() {
+    BasicStateCodelabTheme {
+        WaterCounter()
+    }
+}
+
 
 
 
