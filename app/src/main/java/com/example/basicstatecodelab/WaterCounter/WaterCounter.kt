@@ -11,6 +11,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import com.example.basicstatecodelab.WellnessTaskItem
+import androidx.compose.foundation.layout.Row
 
 @Composable
 fun WaterCounter(modifier: Modifier = Modifier){
@@ -18,11 +20,24 @@ fun WaterCounter(modifier: Modifier = Modifier){
         // Changes to count are now tracked by compose
         var count by remember { mutableStateOf(0) }
         if (count > 0) {
+            var showTask by remember { mutableStateOf(true) }
+            if (showTask) {
+                WellnessTaskItem(
+                    onClose = { showTask = false },
+                    taskName = "Have you taken your 15 Minute walk toady ?"
+                )
+            }
             Text("You've had $count glasses.")
         }
+        Row(Modifier.padding(18.dp)){
             Button(onClick = { count++ }, Modifier.padding(top = 8.dp), enabled = count < 10) {
                 Text("Add One")
-
+            }
+            Button(
+                onClick = { count = 0 },
+                Modifier.padding(start = 8.dp)) {
+                Text("Clear water count")
+            }
         }
     }
 }
